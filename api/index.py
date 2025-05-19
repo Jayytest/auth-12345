@@ -113,7 +113,8 @@ def consume_oculus_iap():
     if response.json().get("success"):
         return jsonify({"result": True})
     return jsonify({"error": True})
-@app.route("/api/t", methods = ['POST','GET'])
+
+@app.route("/api/td", methods = ['POST','GET'])
 def pftd():
     A = f"https://{Title}.playfabapi.com/Server/GetTitleData"
     B = {"X-SecretKey": Dash, "Content-Type": "application/json"}
