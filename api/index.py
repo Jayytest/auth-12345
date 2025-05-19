@@ -13,9 +13,6 @@ API_KEY = "OC|9511338942260576|c22abe803b219e35739f634d02556f08"
 def get_auth_headers():
     return {"Content-Type": "application/json", "X-SecretKey": SECRET_KEY}
 
-@app.route("", methods=["POST", "GET"])
-def main():
-    return "newest or something like that"
 
 @app.route("/api/PlayFabAuthentication", methods=["POST"])
 def playfab_authentication():
