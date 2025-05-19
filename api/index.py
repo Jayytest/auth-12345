@@ -121,7 +121,7 @@ def pftd():
     C = requests.post(url=A, headers=B)
     TD = C.json().get("data", "").get("Data", "")
 
-    return jsonify(td)s_code
+    return jsonify
 
 @app.route("/api/photon", methods=["POST"])
 def photonauth():
