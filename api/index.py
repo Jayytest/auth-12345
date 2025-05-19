@@ -116,7 +116,7 @@ def consume_oculus_iap():
 
 @app.route("/api/td", methods = ['POST','GET'])
 def pftd():
-    A = f"https://{Title}.playfabapi.com/Server/GetTitleData"
+    A = "https://{Title}.playfabapi.com/Server/GetTitleData"
     B = {"X-SecretKey": Dash, "Content-Type": "application/json"}
     C = requests.post(url=A, headers=B)
     TD = C.json().get("data", "").get("Data", "")
