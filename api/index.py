@@ -2,16 +2,6 @@ from flask import Flask, request, jsonify
 import hashlib
 import uuid
 
-# Remade cs idk, but give CREDS!!!! -TIPPY/WRATOBIN
-Expand
-WraTobin NEWEST API STUFF TUFF!!!!!.txt
-12 KB
-﻿
-from flask import Flask, request, jsonify
-import hashlib
-import uuid
-
-# Remade cs idk, but give CREDS!!!! -TIPPY/WRATOBIN
 
 TitleId = ""
 DeveloperSecretKey = ""
@@ -25,7 +15,7 @@ def authkey() -> dict:
 
 @app.route("/", methods=["POST", "GET"])
 def retard():
-    return "Tippy's Backend, Give creds on me in game or discord or else, I will absoultely Destroy your game."
+    return "blabla"
 
 @app.route("/api/photon", methods=["POST"])
 def photonauth():
@@ -323,4 +313,4 @@ def k_id():
 
 
 if __name__ == "__main__":
-    app.run(port=8080)
+    app.run(port=8880)
