@@ -270,36 +270,47 @@ def save_accepted_agreements(agreements):
     with open('accepted_agreements.json', 'w') as file:
         json.dump(agreements, file)
 
-@app.route("/td", methods=["GET", "POST"])
-def TitleData():
-    return jsonify({
-        "MOTD": "newest test!",
-        "TOBDefCompTxt": "PLEASE SELECT A PACK TO TRY ON AND BUY",
-        "TOBDefPurchaseBtnDefTxt": "SELECT A PACK",
-        "TOBSafeCompTxt": "PURCHASE ITEMS IN YOUR CART AT THE CHECKOUT COUNTER",
-        "TOBAlreadyOwnCompTxt": "YOU OWN THE BUNDLE ALREADY! THANK YOU!",
-        "TOBAlreadyOwnPurchaseBtnTxt": "-",
-        "BundleBoardSafeAccountSign": "hi",
-        "BundleBoardSign_SafeAccount": "hi",
-        "BundleBoardSign": "hi",
-        "BundleKioskButton": "ts doesnt exist anymore",
-        "BundleKioskSign": "discord.gg/cubecorp",
-        "BundleLargeSign": "discord.gg/cubecorp",
-        "SeasonalStoreBoardSign": "I DONT KNOW WHAT THIS IS!!!",
-        "VStumpMOTD": "THERE HAS BEEN NEW MAPS IN VIRTUAL STUMP! (WHATEVER THE MAPS ARE HERE)",
-        "VStumpDiscord": "discord.gg/cubecorp",
-        "VStumpFeaturedMaps": "4623240,4602591,4409834,4540963",
-        "AllowedClientVersions": "1.1.99",
-        "ArenaForestSign": "^\nTO THE\nMAGMARENA!",
-        "ArenaRulesSign": "RULES:\n\n+CAN'T RUN WITH THE BALL\n\n+CAN'T GRAB THE BALL WHEN IT'S THE OTHER TEAM'S COLOR\n\n+BALL COLOR CHANGES FOR A FEW SECONDS WHEN DROPPED\n\n+SCORE BY HOLDING THE BALL IN THE OTHER TEAM'S GOAL\n\n\nRESTARTING THE GAME:\n\nDROP THE BALL INTO THE START SLOT, THEN THE OTHER TEAM MUST PRESS START GAME",
+@app.route("/api/K-ID", methods=["POST"])
+def k_id():
+    data = request.get_json()
+
+    if not data:
+        return jsonify({"error": "Missing JSON body"}), 400
+
+    required_fields = ["Age", "Permissions", "GetSubmittedAge", "VoiceChat", "CustomNames", "PhotonPermission"]
+    missing = [field for field in required_fields if field not in data]
+    if missing:
+      return jsonify({"error": f"Missing fields: {', '.join(missing)}"}), 400
+
+
+    user_age = data.get("Age")
+    permissions = data.get("Permissions")
+    submitted_age = data.get("GetSubmittedAge")
+    voice_chat = data.get("VoiceChat")
+    custom_name = data.get("CustomNames")
+    photon_permission = data.get("PhotonPermission")
+
+    response = {
+        "status": "success",
+        "UserAge": user_age,
+        "Permissions": permissions,
+        "GetSubmittedAge": submitted_age,
+        "VoiceChat": voice_chat,
+        "CustomNames": custom_name,
+        "PhotonPermission": photon_permission,
         "AnnouncementData": {
             "ShowAnnouncement": "false",
             "AnnouncementID": "kID_Prelaunch",
             "AnnouncementTitle": "IMPORTANT NEWS",
-            "Message": "We're working to make Gorilla Tag a better, more age-appropriate experience in our next update. To learn more, please check out our Discord."
-        },
-        "UseLegacyIAP": "False",
-        "CreditsData": '[{"Title":"DEV TEAM/OWNERS","Entries":["kerestellwest","lemming","anotheraxiom","electronicwall"]}]'
-    })
+            "Message": (
+                "We're working to make Gorilla Tag a better, more age-appropriate experience "
+                "in our next update. To learn more, please check out our Discord."
+            )
+        }
+    }
+
+    return jsonify(response), 200
+
+
 if __name__ == "__main__":
-    app.run(port=8880)
+    app.run(port=82080)
