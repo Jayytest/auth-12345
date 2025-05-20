@@ -3,10 +3,10 @@ import hashlib
 import uuid
 
 
-TitleId = ""
-DeveloperSecretKey = ""
-PHOTON_WEBHOOK_URL = ""
-ApiKey = ""
+TitleId = "1DEFB"
+DeveloperSecretKey = "PJXPUDS6GKBYY1ZAKHPAG8YZWOURXJ6I77F4M3JGSDQ1MIBGJ6"
+PHOTON_WEBHOOK_URL = "https://1DEFB.playfablogic.com/webhook/1/prod/ZZFBBCDGWYSX97AQHZY3FRGBHJH8F1E575ECFUAD1SETEC5OB4"
+ApiKey = "OC|9511338942260576|c22abe803b219e35739f634d02556f08"
 
 app = Flask(__name__)
 
